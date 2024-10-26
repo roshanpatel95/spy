@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPY Options Trading Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SPY 0DTE Options Trading Dashboard</h1>
+            <div class="input-group">
+                <input type="text" id="ticker-input" placeholder="Enter Ticker (e.g., SPY)">
+                <button id="fetch-data">Fetch Data</button>
+            </div>
+        </header>
+
+        <section class="analysis">
+            <h2>1-Minute SPY Analysis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Decision</th>
+                        <th>Action</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Current Price Above EMA 200</td>
+                        <td>Long-term Bullish</td>
+                        <td>Consider Calls</td>
+                        <td id="ema200-check"></td>
+                    </tr>
+                    <tr>
+                        <td>Current Price Below EMA 200</td>
+                        <td>Long-term Bearish</td>
+                        <td>Consider Puts</td>
+                        <td id="ema200-check-bear"></td>
+                    </tr>
+                    <tr>
+                        <td>EMA 9 > EMA 21</td>
+                        <td>Short-term Bullish</td>
+                        <td>Buy Calls</td>
+                        <td id="ema9-21-check"></td>
+                    </tr>
+                    <tr>
+                        <td>EMA 9 < EMA 21</td>
+                        <td>Short-term Bearish</td>
+                        <td>Buy Puts</td>
+                        <td id="ema9-21-check-bear"></td>
+                    </tr>
+                    <tr>
+                        <td>RSI < 30</td>
+                        <td>Oversold</td>
+                        <td>Potential Bounce</td>
+                        <td id="rsi-oversold-check"></td>
+                    </tr>
+                    <tr>
+                        <td>RSI > 70</td>
+                        <td>Overbought</td>
+                        <td>Potential Reversal</td>
+                        <td id="rsi-overbought-check"></td>
+                    </tr>
+                    <tr>
+                        <td>MACD Bullish</td>
+                        <td>MACD Line > Signal Line</td>
+                        <td>Bullish Momentum</td>
+                        <td id="macd-bullish-check"></td>
+                    </tr>
+                    <tr>
+                        <td>MACD Bearish</td>
+                        <td>MACD Line < Signal Line</td>
+                        <td>Bearish Momentum</td>
+                        <td id="macd-bearish-check"></td>
+                    </tr>
+                    <tr>
+                        <td>Current Volume > Average</td>
+                        <td>Validates Move</td>
+                        <td>Strong Signal</td>
+                        <td id="volume-check"></td>
+                    </tr>
+                    <tr>
+                        <td>Current Volume < Average</td>
+                        <td>Weakens Interest</td>
+                        <td>Caution</td>
+                        <td id="volume-check-bear"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="values">
+            <h2>Real-Time Values</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Current Price:</td>
+                        <td id="current-price">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>EMA 9:</td>
+                        <td id="ema9">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>EMA 21:</td>
+                        <td id="ema21">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>EMA 200:</td>
+                        <td id="ema200">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>RSI:</td>
+                        <td id="rsi">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>MACD Line:</td>
+                        <td id="macd-line">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>Signal Line:</td>
+                        <td id="signal-line">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>Current Volume:</td>
+                        <td id="current-volume">Loading...</td>
+                    </tr>
+                    <tr>
+                        <td>Average Volume:</td>
+                        <td id="average-volume">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="decision">
+            <h2>Quick Decision</h2>
+            <p id="multi-timeframe-decision">Decision: Hold</p>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
